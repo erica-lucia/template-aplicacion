@@ -1,6 +1,5 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   CCloseButton,
   CSidebar,
@@ -8,21 +7,20 @@ import {
   CSidebarFooter,
   CSidebarHeader,
   CSidebarToggler,
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
+} from '@coreui/react';
+import CIcon from '@coreui/icons-react';
 
-import { AppSidebarNav } from './AppSidebarNav'
+import { AppSidebarNav } from './AppSidebarNav';
 
-import { logo } from 'src/assets/brand/logo'
-import { sygnet } from 'src/assets/brand/sygnet'
+import { sygnet } from 'src/assets/brand/sygnet';
 
 // sidebar nav config
-import navigation from '../_nav'
+import navigation from '../_nav';
 
 const AppSidebar = () => {
-  const dispatch = useDispatch()
-  const unfoldable = useSelector((state) => state.sidebarUnfoldable)
-  const sidebarShow = useSelector((state) => state.sidebarShow)
+  const dispatch = useDispatch();
+  const unfoldable = useSelector((state) => state.sidebarUnfoldable);
+  const sidebarShow = useSelector((state) => state.sidebarShow);
 
   return (
     <CSidebar
@@ -32,12 +30,13 @@ const AppSidebar = () => {
       unfoldable={unfoldable}
       visible={sidebarShow}
       onVisibleChange={(visible) => {
-        dispatch({ type: 'set', sidebarShow: visible })
+        dispatch({ type: 'set', sidebarShow: visible });
       }}
     >
       <CSidebarHeader className="border-bottom">
         <CSidebarBrand to="/">
-          <CIcon customClassName="sidebar-brand-full" icon={logo} height={32} />
+          <img src="/logo.png" alt="logo" style={{ maxWidth: "100px", height: "auto" }} />
+          <CIcon customClassName="sidebar-brand-full" icon={sygnet} height={32} />
           <CIcon customClassName="sidebar-brand-narrow" icon={sygnet} height={32} />
         </CSidebarBrand>
         <CCloseButton
@@ -53,7 +52,7 @@ const AppSidebar = () => {
         />
       </CSidebarFooter>
     </CSidebar>
-  )
-}
+  );
+};
 
-export default React.memo(AppSidebar)
+export default React.memo(AppSidebar);
